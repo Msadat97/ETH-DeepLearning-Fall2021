@@ -1,0 +1,36 @@
+---
+model:
+  class_name: iin.networks.FactorTransformer
+  in_channel: 8192
+  n_flow: 12 
+  hidden_depth: 2 
+  hidden_dim: 512
+  n_factors: 4
+
+base_dir: /cluster/scratch/ssadat/dl-project-outputs
+
+resume: false
+checkpoint_path: ${base_dir}/iin_state_dict_factor_loss_wplus.pt
+
+dataset:
+  class_name: iin.dataset.TensorPairedDataset
+  source_path: ${base_dir}/latents/source-ws.pt
+  attribute_path: ${base_dir}/attribute
+
+data_loader:
+  batch_size: 500 
+  num_workers: 4 
+  pin_memory: true
+
+optimizer:
+  class_name: "torch.optim.Adam"
+  lr: 1e-5
+
+device: "cuda"
+
+train_options:
+  n_epochs: 100
+
+loss: 
+  class_name: "iin.loss.FactorLoss"
+  rho: 0.975

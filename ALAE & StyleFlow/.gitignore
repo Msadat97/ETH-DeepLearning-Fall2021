@@ -1,0 +1,15 @@
+#File Types
+
+*.pth
+*.pkl
+*.pyc
+
+#Directories and Files
+StyleSpace-main/imgs/
+__pycache__/
+ALAE/gradient_mask
+ALAE/gradient_mask_32_0
+ALAE/gradient_mask_32_25
+ALAE/gradient_mask_32_50
+ALAE/gradient_mask_32_75
+StyleSpace/imgs/stylespace_short.gif
